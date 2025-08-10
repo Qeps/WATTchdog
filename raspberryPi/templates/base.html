@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ title or "WATCHdog" }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>window.RPI_IP="{{ ip }}";window.WATCHDOG_MOTTO="{{ motto }}";</script>
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">WATCHdog</div>
+    <nav class="menu">
+      <a href="#start" data-section="start" class="active">Start</a>
+      <a href="#live" data-section="live">Live View</a>
+      <a href="#config" data-section="config">Device Configuration</a>
+      <a href="#about" data-section="about">About Us</a>
+      <button id="themeToggle" class="btn theme-toggle" type="button">Light theme</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <span>RPi: <strong id="ipLabel">{{ ip }}</strong></span>
+    <span>•</span>
+    <span>{{ title or "WATCHdog" }} — {{ motto }}</span>
+  </footer>
+</body>
+</html>
