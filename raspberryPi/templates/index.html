@@ -22,95 +22,13 @@
 
 <section id="section-live" class="section">
   <h2>Live View</h2>
-  <div class="grid two">
-    <div class="card">
-      <h3>Send ASCII Text</h3>
-      <form id="sendForm">
-        <textarea id="msgInput" placeholder="Type ASCII message..."></textarea>
-        <div class="row">
-          <button type="submit" class="btn primary">Send</button>
-          <span id="sendStatus" class="muted"></span>
-        </div>
-      </form>
-      <p class="muted small">Example (terminal):<br>
-        <code>curl -X POST -H "Content-Type: application/json" -d '{"text":"Hello RPi"}' http://{{ ip }}:8000/api/send</code>
-      </p>
-    </div>
-    <div class="card">
-      <h3>Received Messages</h3>
-      <div id="messages" class="messages"></div>
-    </div>
-  </div>
+  <div id="liveList" class="live-list"><!-- render by JS --></div>
 </section>
 
 <section id="section-config" class="section">
   <h2>Device Configuration</h2>
-
-  <!-- device header -->
-  <div class="device-bar">
-    <div class="device-id">
-      <span class="badge">WATCHdog</span> <strong>#111111</strong>
-    </div>
-    <button id="sendConfigBtn" class="btn primary">Send configuration</button>
-  </div>
-
-  <div class="grid two">
-    <!-- RECIPIENTS -->
-    <div class="card">
-      <h3>Recipients (max 3)</h3>
-      <form class="mini-grid" id="recipientsForm">
-        <label>Name 1
-          <input id="r_name_1" type="text" placeholder="e.g., John">
-        </label>
-        <label>Email 1
-          <input id="r_email_1" type="email" placeholder="john@example.com">
-        </label>
-        <label>Phone 1
-          <input id="r_phone_1" type="text" placeholder="+48 600 000 000">
-        </label>
-
-        <label>Name 2
-          <input id="r_name_2" type="text" placeholder="e.g., Anna">
-        </label>
-        <label>Email 2
-          <input id="r_email_2" type="email" placeholder="anna@example.com">
-        </label>
-        <label>Phone 2
-          <input id="r_phone_2" type="text" placeholder="+48 700 000 000">
-        </label>
-
-        <label>Name 3
-          <input id="r_name_3" type="text" placeholder="e.g., Mark">
-        </label>
-        <label>Email 3
-          <input id="r_email_3" type="email" placeholder="mark@example.com">
-        </label>
-        <label>Phone 3
-          <input id="r_phone_3" type="text" placeholder="+48 800 000 000">
-        </label>
-      </form>
-    </div>
-
-    <!-- EVENTS -->
-    <div class="card">
-      <h3>Events (max 9)</h3>
-      <p class="muted small">Each event: choose recipient and trigger mode, then pick notification channels.</p>
-
-      <!-- header row -->
-      <div class="events-header">
-        <div>#</div>
-        <div>Recipient</div>
-        <div>Trigger mode</div>
-        <div>SMS</div>
-        <div>Email</div>
-      </div>
-
-      <!-- editor -->
-      <div id="eventsEditor" class="events-editor"><!-- rows rendered by JS --></div>
-    </div>
-  </div>
+  <div id="configList" class="config-list"><!-- rendered by JS --></div>
 </section>
-
 
 <section id="section-about" class="section">
   <h2>About Us</h2>

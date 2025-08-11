@@ -5,7 +5,7 @@
   --accent:#22c55e; --accent-2:#f59e0b; --accent-3:#22d3ee;
   --border:rgba(255,255,255,.08);
   --card-grad-0:rgba(20,26,31,.95); --card-grad-1:rgba(16,22,26,.92);
-  --row-bg:#11171b;                 /* ZAMIANA: jednolite tło wierszy */
+  --row-bg:#11171b;                 /* jednolite tło wierszy */
   --input:#0f1418; --ring:rgba(34,197,94,.45);
   --nav-bg:rgba(16,18,22,.75);
   --lead:#dde6ee;
@@ -61,10 +61,10 @@ html[data-theme="light"] body::before{
   filter:blur(48px) saturate(110%); opacity:.35;
 }
 
-/* micro noise */
+/* micro noise (percent-encoded, bez \ i spacji) */
 body::after{
   content:""; position:fixed; inset:0;
-  background-image:url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'> <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter> <rect width='100%' height='100%' filter='url(#n)' opacity='0.012'/></svg>");
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27120%27%20height%3D%27120%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.8%27%20numOctaves%3D%273%27%20stitchTiles%3D%27stitch%27/%3E%3C/filter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url(%23n)%27%20opacity%3D%270.012%27/%3E%3C/svg%3E");
   pointer-events:none; z-index:-1;
 }
 
@@ -165,7 +165,7 @@ select{appearance:none}
 .row{display:flex; align-items:center; gap:10px; margin-top:10px}
 .row.end{justify-content:flex-end}
 
-/* LIVE messages */
+/* LIVE messages (legacy; nie szkodzi, jeśli zostaje) */
 .messages{ display:flex; flex-direction:column; gap:8px; max-height:360px; overflow:auto }
 .messages .item{
   border:1px solid var(--border); background:var(--input); padding:10px; border-radius:10px;
@@ -192,8 +192,8 @@ select{appearance:none}
   border-radius:999px; border:1px solid var(--border);
 }
 
-/* Send configuration - theme color */
-#sendConfigBtn{
+/* Send configuration — dla wielu urządzeń (klasa, nie id) */
+.send-config-btn{
   color: var(--send-text) !important;
 }
 
@@ -225,3 +225,23 @@ input[type="checkbox"]{ accent-color:var(--accent) }
   .events-row .ck.sms{ grid-column: 2 / -1; justify-content:flex-start }
   .events-row .ck.email{ grid-column: 2 / -1; justify-content:flex-start }
 }
+
+/* Live View list: karty jeden pod drugim */
+.live-list{ display:flex; flex-direction:column; gap:24px }
+
+/* karta live używa wyglądu .card; tylko wnętrze wykresu */
+.live-card .chart-head{
+  display:flex; align-items:center; justify-content:space-between; margin-top:6px;
+}
+.live-card h3{ margin:4px 0 10px 0 }
+
+.chart-wrap{
+  position:relative; width:100%; height:260px;
+  background: var(--row-bg);
+  border:1px solid var(--border);
+  border-radius:12px; padding:8px;
+}
+.chart-wrap canvas{ width:100%; height:100%; display:block; border-radius:8px }
+
+/* Device Configuration list (dla wielu urządzeń) */
+.config-list{ display:flex; flex-direction:column; gap:24px }
