@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ title or "WATCHdog" }}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <script>window.RPI_IP="{{ ip }}";window.WATCHDOG_MOTTO="{{ motto }}";</script>
   <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>

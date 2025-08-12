@@ -1,0 +1,24 @@
+/* Cards */
+.card {
+  position: relative;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--card-grad-0), var(--card-grad-1));
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, .28),
+    inset 0 1px rgba(255, 255, 255, .04);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    120% 90% at 50% -20%,
+    rgba(255, 255, 255, .05),
+    transparent 60%
+  );
+  pointer-events: none;
+}

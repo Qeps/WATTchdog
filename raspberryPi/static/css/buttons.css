@@ -1,0 +1,62 @@
+/*Generic buttons*/
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: .15s;
+}
+
+.btn:hover {
+  filter: brightness(1.06);
+}
+
+/* Primary button variant */
+.btn.primary {
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    color-mix(in srgb, var(--accent) 70%, #fff 30%)
+  );
+  border-color: transparent;
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+/*Theme toggle button*/
+.theme-toggle {
+  margin-left: 18px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    90deg,
+    var(--toggle-grad-start),
+    var(--toggle-grad-end)
+  );
+  color: var(--toggle-text);
+  box-shadow: 0 6px 18px var(--toggle-shadow);
+  transition:
+    transform .12s,
+    filter .12s,
+    box-shadow .12s;
+}
+
+.theme-toggle:hover {
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}

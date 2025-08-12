@@ -1,0 +1,132 @@
+/* Device bar */
+.device-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px 0 18px;
+}
+
+.device-id {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.badge {
+  padding: 4px 10px;
+  font-weight: 700;
+  color: var(--badge-text);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+/* Layout for config panels */
+.grid.two {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 900px) {
+  .grid.two { grid-template-columns: 1fr !important; }
+}
+
+#section-config .card + .card {
+  margin-top: 24px;
+}
+
+/* Config send button */
+.send-config-btn {
+  color: var(--send-text) !important;
+}
+
+/* Device configuration list */
+.config-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Events table */
+.events-header {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 90px 90px;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 8px 0 6px;
+  padding: 0 6px;
+  opacity: .9;
+}
+
+.events-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.events-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 90px 90px;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background: var(--row-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .04);
+}
+
+:root[data-theme="light"] .events-row {
+  box-shadow: inset 0 1px rgba(255, 255, 255, .6);
+}
+
+.events-row .idx {
+  text-align: center;
+  color: var(--muted);
+}
+
+.events-row .ck {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+/* Native checkbox accent */
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+/* Responsive events layout */
+@media (max-width: 860px) {
+  .events-header { display: none; }
+  .events-row {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .events-row .trigger { grid-column: 2 / -1; }
+  .events-row .ck.sms { grid-column: 2 / -1; justify-content: flex-start; }
+  .events-row .ck.email { grid-column: 2 / -1; justify-content: flex-start; }
+}
+
+/* Live messages (legacy) */
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 360px;
+  overflow: auto;
+}
+
+.messages .item {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--input);
+  white-space: pre-wrap;
+  word-break: break-word;
+}

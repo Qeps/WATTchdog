@@ -1,0 +1,45 @@
+/* Navigation bar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 28px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+.menu {
+  margin-left: auto;
+  padding-right: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.menu a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 22px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: .2s;
+}
+
+.menu a:hover,
+.menu a.active {
+  color: var(--text);
+  background: rgba(0, 0, 0, .06);
+}
+
+:root[data-theme="light"] .menu a:hover,
+:root[data-theme="light"] .menu a.active {
+  background: rgba(0, 0, 0, .06);
+}

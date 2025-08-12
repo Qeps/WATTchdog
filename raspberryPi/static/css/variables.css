@@ -1,0 +1,35 @@
+  /* Dark (default) — charcoal + eco accents */
+:root{
+  --bg-0:#0e1114; --bg-1:#0e1114;
+  --text:#f3f7f8; --muted:#a6b0b8;
+  --accent:#22c55e; --accent-2:#f59e0b; --accent-3:#22d3ee;
+  --border:rgba(255,255,255,.08);
+  --card-grad-0:rgba(20,26,31,.95); --card-grad-1:rgba(16,22,26,.92);
+  --row-bg:#11171b;
+  --input:#0f1418; --ring:rgba(34,197,94,.45);
+  --nav-bg:rgba(16,18,22,.75);
+  --lead:#dde6ee;
+  --shadow:0 10px 30px rgba(0,0,0,.28);
+  --toggle-grad-start:#34d399; --toggle-grad-end:#22c55e;
+  --toggle-text:#0a1a10; --toggle-shadow:rgba(34,197,94,.32);
+  --badge-text:#0a0e0f;
+  --send-text:#0a0e0f;
+}
+
+/* Light — white + eco accents */
+:root[data-theme="light"]{
+  --bg-0:#f8fafb; --bg-1:#f8fafb;
+  --text:#0f1720; --muted:#5a6774;
+  --accent:#16a34a; --accent-2:#d97706; --accent-3:#06b6d4;
+  --border:rgba(0,0,0,.08);
+  --card-grad-0:#ffffff; --card-grad-1:#f7faf7;
+  --row-bg:#ffffff;
+  --input:#ffffff; --ring:rgba(22,163,74,.35);
+  --nav-bg:rgba(255,255,255,.85);
+  --lead:#293640;
+  --shadow:0 10px 30px rgba(0,0,0,.12);
+  --toggle-grad-start:#166534; --toggle-grad-end:#0b7a3b;
+  --toggle-text:#ffffff; --toggle-shadow:rgba(20,83,45,.35);
+  --badge-text:#ffffff;
+  --send-text:#ffffff;
+}
