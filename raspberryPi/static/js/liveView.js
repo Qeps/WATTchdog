@@ -1,0 +1,56 @@
+'use strict';
+import { $, $all } from './helpers.js';
+import { MiniChart } from './miniChart.js';
+import { LIVE_DEVICES } from './devices.js';
+
+let liveTimers = [];
+export let liveCharts = [];
+
+function makePowerSimulator() {
+  let v = 350 + Math.random() * 50;
+  return () => {
+    v += (Math.random() - 0.5) * 30;
+    if (Math.random() < 0.03) v += (Math.random() < 0.5 ? -1 : 1) * (150 + Math.random() * 250);
+    v = Math.max(0, Math.min(1800, v));
+    return v;
+  };
+}
+
+export function buildLiveCards() {
+  const host = $('#liveList');
+  if (!host) return;
+  host.innerHTML = '';
+  liveCharts = [];
+  LIVE_DEVICES.forEach(dev => {
+    const card = document.createElement('div');
+    card.className = 'card live-card';
+    card.innerHTML = `
+      <div class="device-bar">
+        <div class="device-id">
+          <span class="badge">WATCHdog</span> <strong>#${dev.id}</strong>
+        </div>
+      </div>
+      <div class="chart-head"><h3>Active power</h3></div>
+      <div class="chart-wrap"><canvas id="pow-${dev.id}"></canvas></div>
+    `;
+    host.appendChild(card);
+
+    const canvas = card.querySelector('canvas');
+    const chart = new MiniChart(canvas, { yMin: 0, yMax: 2000, maxPoints: 120 });
+    liveCharts.push({ dev, chart });
+  });
+}
+
+export function startLiveView() {
+  stopLiveView();
+  liveTimers = liveCharts.map(({ chart }) => {
+    const sim = makePowerSimulator();
+    for (let i = 0; i < 20; i++) chart.push(sim()); // seed
+    return setInterval(() => chart.push(sim()), 500);
+  });
+}
+
+export function stopLiveView() {
+  liveTimers.forEach(t => clearInterval(t));
+  liveTimers = [];
+}

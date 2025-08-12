@@ -6,7 +6,7 @@
   <title>{{ title or "WATCHdog" }}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <script>window.RPI_IP="{{ ip }}";window.WATCHDOG_MOTTO="{{ motto }}";</script>
-  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body>
   <header class="navbar">
