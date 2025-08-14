@@ -61,7 +61,7 @@ export function buildConfigGroups() {
     group.innerHTML = `
       <div class="device-bar">
         <div class="device-id">
-          <span class="badge">WATCHdog</span> <strong>#${dev.id}</strong>
+          <span class="badge">WATTCHdog</span> <strong>#${dev.id}</strong>
         </div>
         <button class="btn primary send-config-btn" data-device="${dev.id}">Send configuration</button>
       </div>

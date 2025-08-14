@@ -27,7 +27,7 @@ export function buildLiveCards() {
     card.innerHTML = `
       <div class="device-bar">
         <div class="device-id">
-          <span class="badge">WATCHdog</span> <strong>#${dev.id}</strong>
+          <span class="badge">WATTCHdog</span> <strong>#${dev.id}</strong>
         </div>
       </div>
       <div class="chart-head"><h3>Active power</h3></div>

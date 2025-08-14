@@ -21,7 +21,7 @@ def index():
     return render_template(
         "index.html",
         ip=get_local_ip(),
-        title="WATCHdog",
+        title="WATTCHdog",
         motto="It watches over your energy."
     )
 

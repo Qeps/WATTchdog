@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ title or "WATCHdog" }}</title>
+  <title>{{ title or "WATTCHdog" }}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <script>window.RPI_IP="{{ ip }}";window.WATCHDOG_MOTTO="{{ motto }}";</script>
+  <script>window.RPI_IP="{{ ip }}";window.WATTCHDOG_MOTTO="{{ motto }}";</script>
   <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body>
   <header class="navbar">
-    <div class="brand">WATCHdog</div>
+    <div class="brand">WATTCHdog</div>
     <nav class="menu">
       <a href="#start" data-section="start" class="active">Start</a>
       <a href="#live" data-section="live">Live View</a>
@@ -27,7 +27,7 @@
   <footer class="footer">
     <span>RPi: <strong id="ipLabel">{{ ip }}</strong></span>
     <span>•</span>
-    <span>{{ title or "WATCHdog" }} — {{ motto }}</span>
+    <span>{{ title or "WATTCHdog" }} — {{ motto }}</span>
   </footer>
 </body>
 </html>
