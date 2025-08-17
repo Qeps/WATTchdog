@@ -1,7 +1,7 @@
 'use strict';
-import { $, $all } from './helpers.js';
+import { $ } from './helpers.js';
 import { MiniChart } from './miniChart.js';
-import { LIVE_DEVICES } from './devices.js';
+import { getDevices } from './devices.js';
 
 let liveTimers = [];
 export let liveCharts = [];
@@ -16,18 +16,22 @@ function makePowerSimulator() {
   };
 }
 
-export function buildLiveCards() {
+export async function buildLiveCards() {
   const host = $('#liveList');
   if (!host) return;
   host.innerHTML = '';
   liveCharts = [];
-  LIVE_DEVICES.forEach(dev => {
+
+  const devices = await getDevices();
+
+  devices.forEach(dev => {
     const card = document.createElement('div');
     card.className = 'card live-card';
     card.innerHTML = `
       <div class="device-bar">
         <div class="device-id">
           <span class="badge">WATTCHdog</span> <strong>#${dev.id}</strong>
+          ${dev.online ? '' : '<span class="muted small" style="margin-left:.5rem;">offline</span>'}
         </div>
       </div>
       <div class="chart-head"><h3>Active power</h3></div>
