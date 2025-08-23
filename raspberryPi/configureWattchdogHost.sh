@@ -5,7 +5,7 @@ set -euo pipefail
 PROJECT_DIR="/home/gb/WATTchdog/WATTchdog/raspberryPi"
 RUN_USER="${SUDO_USER:-gb}"
 PORT="8000"
-APP_MODULE="hostServer:app"
+APP_MODULE="main:app"
 SERVICE_NAME="wattchdog"
 HOSTNAME_TARGET="wattchdog"
 PYTHON_BIN="python3"
@@ -28,7 +28,7 @@ fi
 
 # --- Check project files ---
 [ -d "${PROJECT_DIR}" ] || die "Missing dir: ${PROJECT_DIR}"
-[ -f "${PROJECT_DIR}/hostServer.py" ] || die "Missing file: ${PROJECT_DIR}/hostServer.py"
+[ -f "${PROJECT_DIR}/main.py" ] || die "Missing file: ${PROJECT_DIR}/main.py"
 
 # --- Setup venv & deps ---
 cd "${PROJECT_DIR}"
