@@ -31,7 +31,7 @@ export async function buildLiveCards() {
       <div class="device-bar">
         <div class="device-id">
           <span class="badge">WATTCHdog</span> <strong>#${dev.id}</strong>
-          ${dev.online ? '' : '<span class="muted small" style="margin-left:.5rem;">offline</span>'}
+          <span class="led ${dev.online ? 'green' : 'red'}" title="${dev.online ? 'online' : 'offline'}" aria-label="${dev.online ? 'online' : 'offline'}"></span>
         </div>
       </div>
       <div class="chart-head"><h3>Active power</h3></div>

@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 # --- Devices live here (per your requirement) ---
 devices_list = DevicesList()
-devices_list.upsert("122334", name="WATTchdog", online=True, ip=getLocalIp())
-devices_list.upsert("122335", name="WATTchdog", online=True, ip=getLocalIp())
+# devices_list.upsert("122334", name="WATTchdog", online=True, ip=getLocalIp())
+# devices_list.upsert("122335", name="WATTchdog", online=True, ip=getLocalIp())
 app.config["DEVICES_LIST"] = devices_list
 
 # --- Minimal request logging (no separate middleware) ---
