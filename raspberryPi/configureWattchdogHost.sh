@@ -9,6 +9,9 @@ APP_MODULE="main:app"
 SERVICE_NAME="wattchdog"
 HOSTNAME_TARGET="wattchdog"
 PYTHON_BIN="python3"
+# MQTT defaults for the app (can be overridden before running this script)
+MQTT_HOST="${MQTT_HOST:-${HOSTNAME_TARGET}.local}"
+MQTT_PORT="${MQTT_PORT:-1883}"
 
 die(){ echo "ERROR: $*" >&2; exit 1; }
 [ "$(id -u)" -eq 0 ] || die "Run as root: sudo $0"
@@ -35,7 +38,7 @@ cd "${PROJECT_DIR}"
 if [ ! -d ".venv" ]; then
   sudo -u "${RUN_USER}" ${PYTHON_BIN} -m venv .venv
 fi
-sudo -u "${RUN_USER}" bash -lc "source .venv/bin/activate && pip install --upgrade pip && pip install flask gunicorn"
+sudo -u "${RUN_USER}" bash -lc "source .venv/bin/activate && pip install --upgrade pip && pip install flask gunicorn paho-mqtt"
 
 # --- Create systemd service ---
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
@@ -51,6 +54,8 @@ User=${RUN_USER}
 WorkingDirectory=${PROJECT_DIR}
 Environment=PYTHONUNBUFFERED=1
 Environment=PATH=${PROJECT_DIR}/.venv/bin
+Environment=MQTT_HOST=${MQTT_HOST}
+Environment=MQTT_PORT=${MQTT_PORT}
 ExecStart=${PROJECT_DIR}/.venv/bin/gunicorn --bind 0.0.0.0:${PORT} --workers 2 ${APP_MODULE}
 Restart=always
 RestartSec=2
@@ -74,5 +79,6 @@ echo "
 --- SUMMARY ---
 mDNS: http://${HOSTNAME_TARGET}.local:${PORT}/
 IP:   http://${IP}:${PORT}/
+MQTT: mqtt://${HOSTNAME_TARGET}.local:${MQTT_PORT}
 Logs: journalctl -u ${SERVICE_NAME}.service -n 100 --no-pager
 "
