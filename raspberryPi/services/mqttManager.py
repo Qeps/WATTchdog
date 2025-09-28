@@ -2,9 +2,11 @@
 Tiny MQTT manager: connects to a broker, subscribes to device topics,
 and updates the in-memory DevicesList.
 
-Handled topics:
-- devices/<serial>/hello  -> upsert(name?, ip?, online default true)
-- devices/<serial>/status -> set_online(online)
+After running shell script, you can send MQTT messages on:
+- mqtt://wattchdog.local:1883
+MQTT topics creation:
+- devices/serial_number/hello - adding device to the device list, message:{"name":"WATTchdog","ip":"192.168.0.50","online"true}
+- devices/serial_number/status - changing device status in  web interface, message:{"online":false}, {"online":true}
 """
 
 import json
