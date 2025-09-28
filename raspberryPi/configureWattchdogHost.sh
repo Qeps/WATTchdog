@@ -40,6 +40,15 @@ if [ ! -d ".venv" ]; then
 fi
 sudo -u "${RUN_USER}" bash -lc "source .venv/bin/activate && pip install --upgrade pip && pip install flask gunicorn paho-mqtt"
 
+# --- Install & configure Mosquitto (anonymous listener on LAN, for testing) ---
+DEBIAN_FRONTEND=noninteractive apt-get install -y mosquitto mosquitto-clients
+systemctl enable --now mosquitto
+cat > /etc/mosquitto/conf.d/10-local.conf <<'EOF'
+listener 1883 0.0.0.0
+allow_anonymous true
+EOF
+systemctl restart mosquitto
+
 # --- Create systemd service ---
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
 cat > "${SERVICE_FILE}" <<EOF
